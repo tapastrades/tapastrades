@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapas Trades</title>
+    
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="sum-box-styles.css">
+    <style>
+        /* Body background color */
+        body {
+            background-color: #0c0642;
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 80px; /* Adjust the width as needed */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #0c0642; /* Sidebar background color */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+        }
+
+        .sidebar a {
+            text-align: center;
+            text-decoration: none;
+            font-size: 24px;
+            color: #1e3896; /* Icon color */
+            margin: 10px 0; /* Add some vertical spacing between icons */
+            transition: color 0.3s; /* Apply a transition to the icon color */
+        }
+
+        .sidebar a:hover {
+            background-color: #ff5733;
+            border-radius: 50%;
+        }
+
+        /* Define the circular background when hovered */
+        .sidebar a.current-page-icon i {
+            transition: background-color 0.3s, border-radius 0.3s; /* Add a transition effect */
+        }
+
+        .sidebar a.current-page-icon {
+            color: #1e3896; /* Glowing color */
+            font-size: 28px; /* Slightly larger size for the glowing effect */
+            animation: glowing 1s infinite alternate; /* Apply the glowing animation */
+        }
+
+        /* Define your custom font */
+        @font-face {
+            font-family: 'urban'; /* Provide a name for your font */
+            src: url('Urbanist-Italic-VariableFont_wght.ttf') format('truetype'); /* Specify the path to your font file */
+            /* You can also include additional font formats (e.g., woff, woff2) for cross-browser compatibility */
+        }
+
+
+        /* Main content */
+        .main-content {
+            margin-left: 80px;
+            padding: 30px;
+            font-size: 36px;
+            color: #7746f2;
+            font-family: urban, sans-serif;
+            flex: 1;
+            margin-right: 0px;
+/*            background-color: white; /* Main content background color */*/
+        }
+
+        /* Reduce line height for paragraphs within main content */
+        .main-content p {
+            line-height: 0.0005; /* Adjust the value as needed */
+        }
+        /* Style for the label and select elements */
+        select {
+/*            margin-left: 0px;*/
+            font-size: 36px;
+            color: #7746f2;
+            font-family: urban, sans-serif; /* Add space between the elements */
+        }
+
+        @keyframes glowing {
+            from {
+                opacity: 0.5; /* Start with lower opacity */
+            }
+            to {
+                opacity: 1; /* End with full opacity */
+            }
+        }
+
+        /* Style for the custom dropdown wrapper */
+        .custom-dropdown {
+            display: flex;
+            align-items: center;
+        }
+
+
+        /* Remove the box around selected text in the dropdown */
+        select {
+            border: none; /* Remove border */
+            background: transparent; /* Remove background color */
+/*            appearance: none; /* Remove default dropdown arrow */*/
+            -webkit-appearance: none; /* For WebKit browsers */
+            padding: 0; /* Remove padding to align with other text */
+            align-content: center;
+            text-align: left;
+            width:120px; /* Set a default width for the select element */
+            transition: width 0.2s; /* Add a smooth transition for width changes */
+        }
+        /* Adjust the width when the select element is in focus */
+        select:focus {
+            width: auto;
+        }
+        /* Style to make percent-change text bold */
+        #percent-change {
+            font-weight: bold;
+/*            font-weight: 200;*/
+        }
+        /* Style to make percent-change text bold */
+        #change-status {
+            font-weight: bold;
+/*            font-weight: 200;*/
+        }
+        /* Change the background color of select options to white */
+        select option {
+            background-color: #0c0642;
+            /* Add any other styles you need for select options */
+        }
+
+        .top-container {
+            display: flex;
+/*            flex-direction: column;*/
+        }
+        .bottom-container {
+            display: flex;
+        }
+        .chart-container {
+            flex: 2;
+            margin-right: 0px;
+            margin-top: 50;
+            padding: 0px;
+            padding-top: 45px;
+            padding-right: 30px;
+            height: 40%;
+            width: 100%;
+            background-color: #0f0752;
+            background: linear-gradient(to bottom, rgba(19, 35, 94, 1), rgba(19, 35, 94, 0)); /* Apply a gradient background with a fade effect at the bottom */
+/*            position: relative; /* Required for the fading effect */*/
+        }
+
+        .left-bottom-container{
+            margin-left: 80px;
+            padding-left: 40px;
+            padding-right: 0px;
+            font-size: 10px;
+            color: 'white';
+            font-family: urban, sans-serif;
+            flex: 1;
+            margin-right: 0px;
+/*            flex: 2;*/
+        }
+        /* Set a fixed height for table rows */
+        #open-positions tbody tr {
+            height: 30px; /* Adjust the height as needed */
+
+        }
+
+        #table-name {
+            font-family: urban, sans-serif;
+            font-size: 15px;
+            color: #a097f0;
+            font-weight: bold;
+        }
+
+        /* Add a bottom border to all table rows in the tbody except the last one */
+        #open-positions tbody tr:not(:last-child) {
+            border-bottom: 1px solid #ccc; /* You can adjust the border style as needed */
+        }
+        .right-bottom-container {
+            flex: 6;
+/*            align-items: left;*/
+        }
+
+        .right {
+            display: flex;
+            align-items: flex-start; /* Align items at the top of the container */
+            justify-content: space-between; /* Create space between the table and pie chart */
+        }
+        .pie-chart-container {
+            flex: 1;
+            padding-right: 100px;
+            padding-top: 20px;
+        }
+/*
+        .table_performance{
+
+        }*/
+        .table_performance {
+            flex: 4;
+            margin-left: 0px;
+            padding-top: 5px;
+            width: 100%;
+/*            margin-right: 20px;*/
+/*            padding-right: 50px;*/
+        }
+        #strategy-bot tbody tr{
+            height: 50px;
+            font-family: urban, sans-serif;
+        }
+        #table_performance-title {
+            font-family: urban, sans-serif;
+            font-size: 15px;
+            color: #a097f0;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- First icon links to the current page -->
+        <a href="#"><i class="fas fa-home"></i></a>
+        <!-- Second icon links to a different page (replace with your desired URL) -->
+        <a href="history.html"><i class="fas fa-info-circle"></i></a>
+    </div>
+    <!-- Main Content -->
+    <div class="top-container">    
+        <div class="main-content">
+            <!-- Display the dynamic text and dropdown menu inline -->
+            <div class="dynamic-content">
+                <div class="text-container">
+                    <p id="synamic-first">
+                        <span> I'm </span>
+                        <span id= 'change-status'></span>
+                    <p id="dynamic-text">
+                        <span id='percent-change'></span>
+                        <select id="time-period-select">
+                            <option value="this-week">this week</option>
+                            <option value="this-month">this month</option>
+                            <option value="3-months">in 3 months</option>
+                            <option value="6-months">in 6 months</option>
+                            <option value="this-year">this year</option>
+                        </select>
+                    |</p>
+                </div>
+            </div>
+            <!-- Sum profit/loss box -->
+            <div class="sum-box">
+                <h2>Sum profit/loss</h2>
+                <p id="sum-value"></p>
+            </div>
+        </div>
+        <!-- Chart Container -->
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <div class='bottom-container'>
+        <div class="left-bottom-container">
+            <p id='table-name'>Open Positions</p>
+            <table id="open-positions">
+                <tbody>
+                    <!-- Table rows for open positions will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="right-bottom-container">
+            <div class='right'>
+                <!-- Pie Chart Container -->
+                <div class="pie-chart-container">
+                    <canvas id="allocation-pie-chart"></canvas>
+                </div>
+                <div class="table_performance">
+                    <p id='table_performance-title'>Strategies</p>
+                    <table id='strategy-bot'>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>    
+                </div>
+                
+                <!-- <div class='pie-chart'> -->
+                
+            </div>
+        </div>
+    </div>
+    <script src="updateData.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
