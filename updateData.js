@@ -335,7 +335,7 @@ function updateDynamicText() {
 document.getElementById("time-period-select").addEventListener("change", updateDynamicText);
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('./data/balanceCurve.txt')
+    fetch('balanceCurve.txt')
       .then(response => response.text())
       .then(data => {
         // Process the data from the file
