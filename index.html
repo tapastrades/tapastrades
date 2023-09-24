@@ -27,6 +27,42 @@
             flex-direction: column;
             align-items: center; /* Center items vertically */
             justify-content: center; /* Center items horizontally */
+            transition: left 1s ease-in-out;
+        }
+
+
+        @media (min-width: 769px) {
+            .sidebar-button{
+                display: block;
+            }
+        }
+
+        /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px; /* Adjust the sidebar width for smaller screens */
+            }
+             .sidebar {
+                display: None; /* Hide the sidebar on smaller screens */
+            }
+
+            .sidebar-button {
+                display: block; /* Display the sidebar button on smaller screens */
+                /* Style the sidebar button as needed */
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                cursor: pointer;
+                z-index: 1; /* Place the button above the sidebar */
+            }
+
+        }
+
+        /* Media query for screens with a maximum width of 480px (smaller mobile devices) */
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 40px; /* Further reduce the sidebar width for smaller screens */
+            }
         }
 
         .sidebar a {
@@ -60,7 +96,6 @@
             src: url('Urbanist-Italic-VariableFont_wght.ttf') format('truetype'); /* Specify the path to your font file */
             /* You can also include additional font formats (e.g., woff, woff2) for cross-browser compatibility */
         }
-
 
         /* Main content */
         .main-content {
@@ -136,6 +171,8 @@
 
         .top-container {
             display: flex;
+            flex-direction: row; /* Arrange items side-by-side */
+            flex-wrap: wrap;
 /*            flex-direction: column;*/
         }
         .bottom-container {
@@ -174,6 +211,14 @@
             max-width: 50%;
 /*            flex: 2;*/
         }
+
+        /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+        @media (max-width: 768px) {
+            .left-bottom-container {
+                margin-left: 20px; /* Adjust the sidebar width for smaller screens */
+            }
+        }
+
         /* Set a fixed height for table rows */
         #open-positions tbody tr {
             height: 30px; /* Adjust the height as needed */
@@ -209,6 +254,14 @@
                 margin-left: 100px; /* Add left margin on mobile devices */
             }
         }
+        /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+        @media (max-width: 768px) {
+            .right{
+                margin-left: 20px;
+            }
+        }
+
+
         .pie-chart-container {
             flex: 1; /* Expand to fill available space */
             max-width: 50%; /* Limit width on small screens */
@@ -236,10 +289,29 @@
             font-weight: bold;
         }
 
+        /* CSS for the button and menu icon */
+        .sidebar-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff; /* Icon color */
+        }
+
+        /* Add styles for the button when it's focused or hovered (optional) */
+        .sidebar-button:hover {
+            background-color: #1e3896; /* Change the background color on hover */
+        }
+        .sidebar-button:focus {
+            outline: none; /* Remove the default focus outline */
+        }
+
+
     </style>
 </head>
 <body>
-    
+
+    <div class="sidebar-button"><i class="fas fa-bars"></i></div>
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- First icon links to the current page -->
