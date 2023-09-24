@@ -1,9 +1,4 @@
-// Sample data for open positions with allocation (replace with your actual data)
-var openPositions = [
-    { symbol: 'AAPL', openPrice: 150.00, percentChange: 2.33, allocation: 25, strategy: 'MomentumSystemic', color: 'rgba(243, 203, 75, 0.8)' },
-    { symbol: 'GOOGL', openPrice: 2700.00, percentChange: -1.85, allocation: 13, strategy: 'MomentumSystemic', color: 'rgba(243, 203, 75, 0.8)' },
-    // Add more positions as needed
-];
+
 function updateOpenPositions(openPositions) {
     var openPositionsTable = document.getElementById('open-positions').getElementsByTagName('tbody')[0];
 
@@ -177,7 +172,7 @@ function getChartData(stdBalance,stdNifty,date) {
     gradient.addColorStop(1, 'rgba(84, 76, 244, 0)'); // En
 
     var dataset1 = {
-            label: 'Nifty 50',
+            label: 'Nifty 50 Benchmark',
             data: stdNifty,
             borderColor: 'blue', // Set the line color to blue
             pointBackgroundColor: 'blue', // Set the data point dot color to blue
