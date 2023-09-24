@@ -131,6 +131,7 @@ function updateOpenPositions(openPositions) {
         stratCell.style.paddingRight = '100px';
 
         performanceCell.style.paddingLeft = '150px';
+
         if (perStrategy[key][0] >= 0.0) {
             performanceCell.style.color = '#86d18c';
         }else{
@@ -409,5 +410,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Call the function to update the text and chart when the DOM is ready
     updateDynamicText();
 });
+
+// Add an event listener for the "resize" event
+window.addEventListener('resize', updateDynamicText);
 
 

@@ -140,6 +140,8 @@
         }
         .bottom-container {
             display: flex;
+            flex-direction: row; /* Arrange items side-by-side */
+            flex-wrap: wrap;
         }
         .chart-container {
             flex: 2;
@@ -155,6 +157,10 @@
 /*            position: relative; /* Required for the fading effect */*/
         }
 
+        .left {
+            flex: 1;
+        }
+
         .left-bottom-container{
             margin-left: 80px;
             padding-left: 40px;
@@ -164,6 +170,8 @@
             font-family: urban, sans-serif;
             flex: 1;
             margin-right: 0px;
+            display: flex;
+            max-width: 50%;
 /*            flex: 2;*/
         }
         /* Set a fixed height for table rows */
@@ -184,29 +192,36 @@
             border-bottom: 1px solid #ccc; /* You can adjust the border style as needed */
         }
         .right-bottom-container {
-            flex: 6;
+            flex: 1;
 /*            align-items: left;*/
         }
 
         .right {
             display: flex;
-            align-items: flex-start; /* Align items at the top of the container */
-            justify-content: space-between; /* Create space between the table and pie chart */
+            flex-direction: row; /* Arrange items side-by-side */
+            flex-wrap: wrap;
+            margin-left: 100px;
+        }
+
+        /* Styles for mobile devices (screens with a maximum width of 768px) */
+        @media (max-width: 768px) {
+            .right {
+                margin-left: 100px; /* Add left margin on mobile devices */
+            }
         }
         .pie-chart-container {
-            flex: 1;
-            padding-right: 100px;
-            padding-top: 20px;
+            flex: 1; /* Expand to fill available space */
+            max-width: 50%; /* Limit width on small screens */
+            margin-right: 20px; /* Add spacing between pie chart and table */
+            margin-left: 20px;
         }
 /*
         .table_performance{
 
         }*/
         .table_performance {
-            flex: 4;
-            margin-left: 0px;
-            padding-top: 5px;
-            width: 100%;
+            flex: 1; /* Expand to fill available space */
+            max-width: 50%; /* Limit width on small screens */
 /*            margin-right: 20px;*/
 /*            padding-right: 50px;*/
         }
@@ -266,19 +281,23 @@
     </div>
     <div class='bottom-container'>
         <div class="left-bottom-container">
-            <p id='table-name'>Open Positions</p>
-            <table id="open-positions">
-                <tbody>
-                    <!-- Table rows for open positions will be dynamically added here -->
-                </tbody>
-            </table>
+            <div class="left">
+                <p id='table-name'>Open Positions</p>
+                <table id="open-positions">
+                    <tbody>
+                        <!-- Table rows for open positions will be dynamically added here -->
+                    </tbody>
+                </table>    
+            </div>
+            
+            <!-- Pie Chart Container -->
+            <div class="pie-chart-container">
+                <canvas id="allocation-pie-chart"></canvas>
+            </div>
         </div>
         <div class="right-bottom-container">
             <div class='right'>
-                <!-- Pie Chart Container -->
-                <div class="pie-chart-container">
-                    <canvas id="allocation-pie-chart"></canvas>
-                </div>
+                
                 <div class="table_performance">
                     <p id='table_performance-title'>Strategies</p>
                     <table id='strategy-bot'>
@@ -286,10 +305,6 @@
                             
                         </tbody>
                     </table>    
-                </div>
-                
-                <!-- <div class='pie-chart'> -->
-                
             </div>
         </div>
     </div>
