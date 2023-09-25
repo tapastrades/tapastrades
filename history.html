@@ -8,7 +8,7 @@
     <!-- Include Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="side-bar-styles.css">
-    
+    <link rel="stylesheet" href="tableTrade-styles.css">
     <style>
         /* Body background color */
         body {
@@ -43,7 +43,7 @@
         }
 
         .input-container input {
-            flex: 1; /* Distribute available space equally */
+            flex: 2; /* Distribute available space equally */
             margin-right: 10px; /* Add spacing between input fields */
             padding: 10px;
             border-radius: 0.5em;
@@ -65,7 +65,7 @@
         }
 
         .label-con {
-            flex: 1;
+            flex: 2;
             margin-top: -178px;
             margin-left: 20px;
             display: inline-block;
@@ -78,7 +78,25 @@
             color: #a097f0;
             font-weight: bold;
         }
-        
+
+        .blank-con {
+            flex: 0.2;
+        }
+
+        .submit-con {
+            flex: 0.2;
+        }
+
+        #submit-btn{
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        #submit-btn i.fas.fa-arrow-right {
+            color: #0c0642;
+        }
+
     </style>
     </style>
 </head>
@@ -95,7 +113,9 @@
     <div class="input-container">
         <input class="input" type="text" placeholder="Input Field 1">
         <input class="input" type="text" placeholder="Input Field 2">
-
+        <div class="submit-con">
+            <button id="submit-btn"><span></span><i class="fas fa-arrow-right"></i></button>
+        </div>
     </div>
     <div class="label-container">
         <div class="label-con">
@@ -104,6 +124,24 @@
         <div class="label-con">
             <label class="input-label-2">Input Label 2</label>                            
         </div>
+        <div class="blank-con">
+        </div>
+    </div>
+    <<div class="table-con">
+        <table class="tradebook-table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Trade ID</th>
+                    <th>Entry Price</th>
+                    <th>Exit Price</th>
+                    <th>Position Type</th>
+                    <th>Entry Time</th>
+                    <th>Exit Time</th>
+                </tr>
+            </thead>
+        </table>
+        
     </div>
     <script src="tradebook.js"></script>
 </body>
