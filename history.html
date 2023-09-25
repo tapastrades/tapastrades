@@ -7,50 +7,13 @@
     
     <!-- Include Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="side-bar-styles.css">
     
     <style>
         /* Body background color */
         body {
-            background-color: #13235e;
+            background-color: #0c0642;
             margin: 0; /* Remove default margin */
-        }
-
-        /* Sidebar */
-        .sidebar {
-            height: 100%;
-            width: 80px; /* Adjust the width as needed */
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #13235e; /* Sidebar background color */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center items vertically */
-            justify-content: center; /* Center items horizontally */
-        }
-
-        .sidebar a {
-            text-align: center;
-            text-decoration: none;
-            font-size: 24px;
-            color: #1e3896; /* Icon color */
-            margin: 10px 0; /* Add some vertical spacing between icons */
-        }
-
-        .sidebar a:hover {
-            background-color: #ff5733;
-            border-radius: 50%;
-        }
-
-        /* Define the circular background when hovered */
-        .sidebar a.current-page-icon i {
-            transition: background-color 0.3s, border-radius 0.3s; /* Add a transition effect */
-        }
-
-        .sidebar a.current-page-icon {
-            color: #1e3896; /* Glowing color */
-            font-size: 28px; /* Slightly larger size for the glowing effect */
-            animation: glowing 1s infinite alternate; /* Apply the glowing animation */
         }
 
         /* Main content */
@@ -67,9 +30,58 @@
                 opacity: 1; /* End with full opacity */
             }
         }
+
+        /* Input fields */
+        .input-container {
+            display: flex;
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-top: 50px;
+            position:relative;
+        }
+
+        .input-container input {
+            flex: 1; /* Distribute available space equally */
+            margin-right: 10px; /* Add spacing between input fields */
+            padding: 10px;
+            border-radius: 0.5em;
+            border: 2px solid white;
+            border-radius: 5px;
+            max-width: 75%;
+            background-color: #0c0642;
+        }
+        
+        .input-label-1{
+            padding:0 0.2em;
+            position:absolute;
+            top:-0.5em;
+            left:1em;
+            background-color:#0c0642;
+            font-family: urban, sans-serif;
+            font-size: 15px;
+            color: #a097f0;
+            font-weight: bold;
+        }
+        .input-label-2{
+            padding:0 0.2em;
+            position: relative;
+            top:-0.6em;
+            left:7.8em;
+            background-color:#0c0642;
+            font-family: urban, sans-serif;
+            font-size: 15px;
+            color: #a097f0;
+            font-weight: bold;
+        }
+/*        .group>input{
+          padding:0.8em;
+          outline:none;
+        }
+*/    </style>
     </style>
 </head>
 <body>
+    <div class="sidebar-button"><i class="fas fa-bars"></i></div>
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- First icon links to the current page -->
@@ -77,5 +89,14 @@
         <!-- Second icon links to a different page (replace with your desired URL) -->
         <a href="#"><i class="fas fa-info-circle"></i></a>
     </div>
+     <!-- Input fields -->
+    <div class="input-container">
+        <label class="input-label-1">Input Label 1</label>
+        <input class="input" type="text" placeholder="Input Field 1">
+        <label class="input-label-2">Input Label 2</label>
+        <input class="input" type="text" placeholder="">
+
+    </div>
+    <script src="tradebook.js"></script>
 </body>
 </html>
