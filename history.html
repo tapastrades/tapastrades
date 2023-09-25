@@ -38,6 +38,8 @@
             margin-right: 100px;
             margin-top: 50px;
             position:relative;
+            align-items: center;
+            z-index: 0;
         }
 
         .input-container input {
@@ -50,34 +52,34 @@
             max-width: 75%;
             background-color: #0c0642;
         }
+
+        .label-container {
+            display: flex;
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-top: 50px;
+            position:relative;
+            flex-wrap: wrap;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .label-con {
+            flex: 1;
+            margin-top: -178px;
+            margin-left: 20px;
+            display: inline-block;
+        }
+
+        .label-con label {
+            background-color:#0c0642;
+            font-family: urban, sans-serif;
+            font-size: 15px;
+            color: #a097f0;
+            font-weight: bold;
+        }
         
-        .input-label-1{
-            padding:0 0.2em;
-            position:absolute;
-            top:-0.5em;
-            left:1em;
-            background-color:#0c0642;
-            font-family: urban, sans-serif;
-            font-size: 15px;
-            color: #a097f0;
-            font-weight: bold;
-        }
-        .input-label-2{
-            padding:0 0.2em;
-            position: relative;
-            top:-0.6em;
-            left:7.8em;
-            background-color:#0c0642;
-            font-family: urban, sans-serif;
-            font-size: 15px;
-            color: #a097f0;
-            font-weight: bold;
-        }
-/*        .group>input{
-          padding:0.8em;
-          outline:none;
-        }
-*/    </style>
+    </style>
     </style>
 </head>
 <body>
@@ -91,11 +93,17 @@
     </div>
      <!-- Input fields -->
     <div class="input-container">
-        <label class="input-label-1">Input Label 1</label>
         <input class="input" type="text" placeholder="Input Field 1">
-        <label class="input-label-2">Input Label 2</label>
-        <input class="input" type="text" placeholder="">
+        <input class="input" type="text" placeholder="Input Field 2">
 
+    </div>
+    <div class="label-container">
+        <div class="label-con">
+            <label class="input-label-1">Input Label 1</label>
+        </div>
+        <div class="label-con">
+            <label class="input-label-2">Input Label 2</label>                            
+        </div>
     </div>
     <script src="tradebook.js"></script>
 </body>
