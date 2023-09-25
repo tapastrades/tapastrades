@@ -10,10 +10,23 @@
     <link rel="stylesheet" href="side-bar-styles.css">
     <link rel="stylesheet" href="tableTrade-styles.css">
     <style>
+
+
+        /* Define your custom font */
+        @font-face {
+            font-family: 'urban'; /* Provide a name for your font */
+            src: url('Urbanist-Italic-VariableFont_wght.ttf') format('truetype'); /* Specify the path to your font file */
+            /* You can also include additional font formats (e.g., woff, woff2) for cross-browser compatibility */
+        }
+
         /* Body background color */
         body {
             background-color: #0c0642;
             margin: 0; /* Remove default margin */
+            font-family: urban, sans-serif;
+            font-size: 15px;
+            color: #a097f0;
+            font-weight: bold
         }
 
         /* Main content */
@@ -111,15 +124,15 @@
     </div>
      <!-- Input fields -->
     <div class="input-container">
-        <input class="input" type="text" placeholder="Input Field 1">
-        <input class="input" type="text" placeholder="Input Field 2">
+        <input id="symbolFilter" class="input" type="text" placeholder="e.g crude silver">
+        <input id="dateFilter" class="input" type="text" placeholder="Input Field 2">
         <div class="submit-con">
             <button id="submit-btn"><span></span><i class="fas fa-arrow-right"></i></button>
         </div>
     </div>
     <div class="label-container">
         <div class="label-con">
-            <label class="input-label-1">Input Label 1</label>
+            <label class="input-label-1">Symbol</label>
         </div>
         <div class="label-con">
             <label class="input-label-2">Input Label 2</label>                            
@@ -143,6 +156,6 @@
         </table>
         
     </div>
-    <script src="tradebook.js"></script>
+    <script src="tradeBook.js"></script>
 </body>
 </html>
