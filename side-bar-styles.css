@@ -1,0 +1,92 @@
+/* Sidebar */
+.sidebar {
+    height: 100%;
+    width: 80px; /* Adjust the width as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0c0642; /* Sidebar background color */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    transition: left 1s ease-in-out;
+}
+
+
+@media (min-width: 769px) {
+    .sidebar-button{
+        display: block;
+    }
+}
+
+/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px; /* Adjust the sidebar width for smaller screens */
+    }
+    .sidebar {
+        display: None; /* Hide the sidebar on smaller screens */
+    }
+
+    .sidebar-button {
+        display: block; /* Display the sidebar button on smaller screens */
+        /* Style the sidebar button as needed */
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 1; /* Place the button above the sidebar */
+    }
+
+}
+
+/* Media query for screens with a maximum width of 480px (smaller mobile devices) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 40px; /* Further reduce the sidebar width for smaller screens */
+    }
+}
+
+.sidebar a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    color: #1e3896; /* Icon color */
+    margin: 10px 0; /* Add some vertical spacing between icons */
+    transition: color 0.3s; /* Apply a transition to the icon color */
+}
+
+.sidebar a:hover {
+    background-color: #ff5733;
+    border-radius: 50%;
+}
+
+/* Define the circular background when hovered */
+.sidebar a.current-page-icon i {
+    transition: background-color 0.3s, border-radius 0.3s; /* Add a transition effect */
+}
+
+.sidebar a.current-page-icon {
+    color: #1e3896; /* Glowing color */
+    font-size: 28px; /* Slightly larger size for the glowing effect */
+    animation: glowing 1s infinite alternate; /* Apply the glowing animation */
+}
+
+
+/* CSS for the button and menu icon */
+.sidebar-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff; /* Icon color */
+}
+
+/* Add styles for the button when it's focused or hovered (optional) */
+.sidebar-button:hover {
+    background-color: #1e3896; /* Change the background color on hover */
+}
+.sidebar-button:focus {
+    outline: none; /* Remove the default focus outline */
+}
