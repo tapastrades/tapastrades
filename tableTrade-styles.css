@@ -30,4 +30,11 @@
     
 }
 
+/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+@media (max-width: 768px) {
+    .tradebook-table{
+        margin-left: 20px;
+    }
+}
+
 

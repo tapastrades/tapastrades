@@ -1,13 +1,34 @@
  // Function to filter JSON data by key and value
-function filterData(data, symbolFilterValue) {
+function filterData(data, symbolFilterValue, dateFilterStart, dateFilterEnd) {
     filteredData = [];
+
     for(const item of data){
+
         if (item['Instrument'] == symbolFilterValue){
-            // console.log(item)
+            filteredData.push(item);
+        }
+        else if (symbolFilterValue === ''){
             filteredData.push(item);
         }
     }
-    return filteredData;
+    dayfilteredData = []
+    var startDate = new Date(dateFilterStart);
+    var endDate = new Date(dateFilterEnd);
+    
+    for (const item in filteredData) {
+        value = filteredData[item];
+        var entryDate = new Date(value['Entry Time']);
+        
+        if (dateFilterStart == undefined || dateFilterEnd == undefined) {
+            dayfilteredData.push(value);
+        }    
+        else if (entryDate > startDate && entryDate < endDate) {
+            dayfilteredData.push(value);
+            
+        }
+    }
+
+    return dayfilteredData;
 }
 function displayTable(filteredData, tradebookTable){
     // Remove all rows
@@ -35,14 +56,13 @@ function displayTable(filteredData, tradebookTable){
         exitTimeCell.textContent = value['Exit Time'];
     }
 }
-function updateTable(symbolFilterValue, tradebookTable) {
+function updateTable(symbolFilterValue, dateFilterStart, dateFilterEnd, tradebookTable) {
     fetch('tradebook.json')
       .then(response => response.json())
       .then(data => {
         // 'data' will contain the loaded array
-        filteredData = filterData(data, symbolFilterValue);
+        filteredData = filterData(data, symbolFilterValue, dateFilterStart, dateFilterEnd);
         displayTable(filteredData, tradebookTable);
-        console.log(filteredData);
       })
       .catch(error => {
         console.error('Error loading data:', error);
@@ -56,30 +76,35 @@ const symbolFilter = document.querySelector('#symbolFilter')
 const dateFilter = document.querySelector('#dateFilter');
 var symbolFilterValue = symbolFilter.value;
 var dateFilterValue = dateFilter.value;
-console.log(dateFilterValue);
-// var dateFilterStart = dateFilterValue.split('-')[0].trim();
-// var dateFilterEnd = dateFilterValue.split('-')[1].trim();
+if (dateFilterValue.type == undefined){
+    var dateFilterStart = undefined
+    var dateFilterEnd = undefined    
+}else {
+    
+    var dateFilterStart = dateFilterValue.split('-')[0].trim();
+    var dateFilterEnd = dateFilterValue.split('-')[1].trim();
 
+}
 // const 
 // Add a click event listener to the button
 submitBtn.addEventListener('click', function() {
     var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
     var symbolFilterValue = symbolFilter.value;
     var dateFilterValue = dateFilter.value;
-        
-    var dateFilterStart = dateFilterValue.split('-')[0].trim();
-    var dateFilterEnd = dateFilterValue.split('-')[1].trim();    
     
-    updateTable(symbolFilterValue, tradebookTable)
+    dateFilterStart = dateFilterValue.split('-')[0].trim();
+    dateFilterEnd = dateFilterValue.split('-')[1].trim();    
+    
+    updateTable(symbolFilterValue, dateFilterStart, dateFilterEnd, tradebookTable)
 });
 
 
 document.addEventListener("DOMContentLoaded", function() {
     // Call the function to update the text and chart when the DOM is ready
-    var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
-    
-    updateTable(symbolFilterValue, tradebookTable);
-    console.log('Activted')
+    tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
+    // console.log(tradebookTable);
+    updateTable(symbolFilterValue, dateFilterStart, dateFilterEnd, tradebookTable);
+    // console.log('Activted')
 });
 
 // Add an event listener for the "resize" event
