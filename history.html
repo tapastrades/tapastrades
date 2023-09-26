@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="side-bar-styles.css">
     <link rel="stylesheet" href="tableTrade-styles.css">
+        
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
     <style>
 
 
@@ -147,10 +152,10 @@
     </div>
     <div class="label-container">
         <div class="label-con">
-            <label class="input-label-1">Symbol</label>
+            <label class="input-label-1"> Symbol </label>
         </div>
         <div class="label-con">
-            <label class="input-label-2">Input Label 2</label>                            
+            <label class="input-label-2"> Date Range </label>                            
         </div>
         <div class="blank-con">
         </div>
@@ -174,11 +179,23 @@
         </table>
         
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
-        // Initialize the date range picker
-        $(document).ready(function() {
-            $('#dateFilter').daterangepicker();
+        $(function() {
+          $('#dateFilter').daterangepicker({
+            opens: 'left',
+             ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            "alwaysShowCalendars": true,
+          }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+          });
         });
     </script>
     <script src="tradeBook.js"></script>

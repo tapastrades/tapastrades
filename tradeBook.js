@@ -53,12 +53,23 @@ function updateTable(symbolFilterValue, tradebookTable) {
 var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
 const submitBtn = document.querySelector('#submit-btn');
 const symbolFilter = document.querySelector('#symbolFilter')
+const dateFilter = document.querySelector('#dateFilter');
 var symbolFilterValue = symbolFilter.value;
+var dateFilterValue = dateFilter.value;
+console.log(dateFilterValue);
+// var dateFilterStart = dateFilterValue.split('-')[0].trim();
+// var dateFilterEnd = dateFilterValue.split('-')[1].trim();
+
 // const 
 // Add a click event listener to the button
 submitBtn.addEventListener('click', function() {
     var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
     var symbolFilterValue = symbolFilter.value;
+    var dateFilterValue = dateFilter.value;
+        
+    var dateFilterStart = dateFilterValue.split('-')[0].trim();
+    var dateFilterEnd = dateFilterValue.split('-')[1].trim();    
+    console.log(dateFilterStart);
     updateTable(symbolFilterValue, tradebookTable)
 });
 
@@ -76,6 +87,8 @@ window.addEventListener('resize', function(){
     // Reload the page when the window is resized
     window.location.reload();
 });
+
+
 
 
 const sidebarButton = document.querySelector('.sidebar-button');
