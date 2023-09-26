@@ -69,7 +69,7 @@ submitBtn.addEventListener('click', function() {
         
     var dateFilterStart = dateFilterValue.split('-')[0].trim();
     var dateFilterEnd = dateFilterValue.split('-')[1].trim();    
-    console.log(dateFilterStart);
+    
     updateTable(symbolFilterValue, tradebookTable)
 });
 
