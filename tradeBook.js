@@ -1,6 +1,7 @@
  // Function to filter JSON data by key and value
 function filterData(data, symbolFilterValue) {
     filteredData = [];
+    console.log(symbolFilterValue)
     for(const item of data){
         if (item['Instrument'] == symbolFilterValue){
             filteredData.push(item);
@@ -9,7 +10,24 @@ function filterData(data, symbolFilterValue) {
     return filteredData;
 }
 function displayTable(filteredData){
-    
+    for(const data in filterData){
+        var row = tradebookTable.insertRow();
+        var symbolCell = row.insertCell(0);
+        var tradeIdCell = row.insertCell(1);
+        var entryCell = row.insertCell(2);
+        var exitCell = row.insertCell(3);
+        var positionCell = row.insertCell(4)
+        var entryTimeCell = row.insertCell(5);
+        var exitTimeCell = row.insertCell(6);
+
+        symbolCell.textContent = filteredData['Instrument'];
+        tradeIdCell.textContent = filteredData['ID'];
+        entryCell.textContent = filteredData['Entry'];
+        exitCell.textContent = filteredData['Exit'];
+        positionCell.textContent = filteredData['Position'];
+        entryTimeCell.textContent = filteredData['Entry Time'];
+        exitTimeCell.textContent =filteredData['Exit Time'];
+    }
 }
 function updateTable(symbolFilterValue) {
     fetch('tradebook.json')
@@ -17,6 +35,7 @@ function updateTable(symbolFilterValue) {
       .then(data => {
         // 'data' will contain the loaded array
         filteredData = filterData(data, symbolFilterValue);
+        displayTable(filteredData);
         console.log(filteredData);
       })
       .catch(error => {
@@ -25,18 +44,20 @@ function updateTable(symbolFilterValue) {
     
 }
 
+var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
 const submitBtn = document.querySelector('#submit-btn');
 const symbolFilter = document.querySelector('#symbolFilter')
+const symbolFilterValue = symbolFilter.value;
 // Add a click event listener to the button
 submitBtn.addEventListener('click', function() {
-    const symbolFilterValue = symbolFilter.value
-    updateTable(symbolFilterValue)
+    
+    updateTable(symbolFilterValue, tradebookTable)
 });
 
 
 document.addEventListener("DOMContentLoaded", function() {
     // Call the function to update the text and chart when the DOM is ready
-    updateTable();
+    updateTable(symbolFilterValue, tradebookTable);
     console.log('Activted')
 });
 
