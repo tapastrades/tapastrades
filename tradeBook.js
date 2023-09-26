@@ -1,16 +1,22 @@
  // Function to filter JSON data by key and value
 function filterData(data, symbolFilterValue) {
     filteredData = [];
-    console.log(symbolFilterValue)
     for(const item of data){
         if (item['Instrument'] == symbolFilterValue){
+            // console.log(item)
             filteredData.push(item);
         }
     }
     return filteredData;
 }
-function displayTable(filteredData){
-    for(const data in filterData){
+function displayTable(filteredData, tradebookTable){
+    // Remove all rows
+    while (tradebookTable.rows.length > 0) {
+        tradebookTable.deleteRow(0); // Delete the first row repeatedly until there are no more rows left.
+    }
+    // console.log(filteredData)
+    for(const data in filteredData){
+        value = filteredData[data];
         var row = tradebookTable.insertRow();
         var symbolCell = row.insertCell(0);
         var tradeIdCell = row.insertCell(1);
@@ -20,22 +26,22 @@ function displayTable(filteredData){
         var entryTimeCell = row.insertCell(5);
         var exitTimeCell = row.insertCell(6);
 
-        symbolCell.textContent = filteredData['Instrument'];
-        tradeIdCell.textContent = filteredData['ID'];
-        entryCell.textContent = filteredData['Entry'];
-        exitCell.textContent = filteredData['Exit'];
-        positionCell.textContent = filteredData['Position'];
-        entryTimeCell.textContent = filteredData['Entry Time'];
-        exitTimeCell.textContent =filteredData['Exit Time'];
+        symbolCell.textContent = value['Instrument'];
+        tradeIdCell.textContent = value['ID'];
+        entryCell.textContent = value['Entry'];
+        exitCell.textContent = value['Exit'];
+        positionCell.textContent = value['Position'];
+        entryTimeCell.textContent = value['Entry Time'];
+        exitTimeCell.textContent = value['Exit Time'];
     }
 }
-function updateTable(symbolFilterValue) {
+function updateTable(symbolFilterValue, tradebookTable) {
     fetch('tradebook.json')
       .then(response => response.json())
       .then(data => {
         // 'data' will contain the loaded array
         filteredData = filterData(data, symbolFilterValue);
-        displayTable(filteredData);
+        displayTable(filteredData, tradebookTable);
         console.log(filteredData);
       })
       .catch(error => {
@@ -47,16 +53,20 @@ function updateTable(symbolFilterValue) {
 var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
 const submitBtn = document.querySelector('#submit-btn');
 const symbolFilter = document.querySelector('#symbolFilter')
-const symbolFilterValue = symbolFilter.value;
+var symbolFilterValue = symbolFilter.value;
+// const 
 // Add a click event listener to the button
 submitBtn.addEventListener('click', function() {
-    
+    var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
+    var symbolFilterValue = symbolFilter.value;
     updateTable(symbolFilterValue, tradebookTable)
 });
 
 
 document.addEventListener("DOMContentLoaded", function() {
     // Call the function to update the text and chart when the DOM is ready
+    var tradebookTable = document.querySelector('.tradebook-table').getElementsByTagName('tbody')[0];
+    
     updateTable(symbolFilterValue, tradebookTable);
     console.log('Activted')
 });
