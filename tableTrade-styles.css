@@ -37,4 +37,10 @@
     }
 }
 
+@media (max-width: 649px) {
+    .tradebook-table tr {
+        display: table-header-group;
+    }
+}
+
 
