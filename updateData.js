@@ -118,9 +118,9 @@ function updateOpenPositions(openPositions) {
 
         var stratCell = row.insertCell(0);
         var performanceCell = row.insertCell(1);
-
+        // console.log(perStrategy[key][0].toFixed(2))
         stratCell.textContent = key;
-        performanceCell.textContent = perStrategy[key][0]+"%";
+        performanceCell.textContent = perStrategy[key][0].toFixed(2)+"%";
         stratCell.style.borderBottom = '1px solid rgba(160, 151, 240, 0.34)';        
         performanceCell.style.borderBottom = '1px solid rgba(160, 151, 240, 0.34)';
 
@@ -326,8 +326,7 @@ function updateDynamicText() {
         var seperated = getSeperated(selectedItems);
         var stdBalance = standardizeToZeroOne(seperated[0]);
         var stdNifty = standardizeToZeroOne(seperated[1]);
-        console.log(stdBalance)
-        console.log(stdNifty)
+        
         // Handle the list here
         const percentChange = ((currentBalance - previousBalance) / previousBalance * 100).toFixed(2);
         // Set the change status based on the data (you can implement your own logic)

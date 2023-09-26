@@ -1,0 +1,32 @@
+
+/* Define your custom font */
+@font-face {
+    font-family: 'urban'; /* Provide a name for your font */
+    src: url('Urbanist-Italic-VariableFont_wght.ttf') format('truetype'); /* Specify the path to your font file */
+    /* You can also include additional font formats (e.g., woff, woff2) for cross-browser compatibility */
+}
+
+/* styles.css */
+.table-container {
+    width: 100%; /* Make the table take up the full width */
+    margin-top: 20px; /* Add spacing between the labels and the table */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Horizontally center the content */
+/*    align-items: center; /* Vertically center the content */*/
+}
+
+.tradebook-table {
+    width: 90%;
+    border-collapse: collapse; /* Collapse table borders into a single border */
+/*    padding-left: 100px;*/
+    margin-left: 100px;
+}
+
+.tradebook-table th, .tradebook-table td {
+    border: 1px solid rgba(160, 151, 240, 0.34); /* Add a border to table headers and data cells */
+    padding: 10px;
+    text-align: center;
+    
+}
+
+
