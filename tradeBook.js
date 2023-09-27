@@ -12,22 +12,25 @@ function filterData(data, symbolFilterValue, dateFilterStart, dateFilterEnd) {
         }
     }
     dayfilteredData = []
-    var startDate = new Date(dateFilterStart);
-    var endDate = new Date(dateFilterEnd);
+    var startDate = new Date(dateFilterStart).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    var endDate = new Date(dateFilterEnd).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
     
+    // console.log(startDate, entryDate);
     for (const item in filteredData) {
         value = filteredData[item];
-        var entryDate = new Date(value['Entry Time']);
+        var entryDate = new Date(value['Entry Time']).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
         
         if (dateFilterStart == undefined || dateFilterEnd == undefined) {
             dayfilteredData.push(value);
         }    
-        else if (entryDate > startDate && entryDate < endDate) {
+        else if (entryDate >= startDate && entryDate <= endDate) {
             dayfilteredData.push(value);
             
         }
-    }
+        // startDate == endDate);
 
+    }
+    console.log(dayfilteredData)
     return dayfilteredData;
 }
 function displayTable(filteredData, tradebookTable){
