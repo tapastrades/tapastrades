@@ -85,6 +85,23 @@ if (dateFilterValue.type == undefined){
     var dateFilterEnd = dateFilterValue.split('-')[1].trim();
 
 }
+
+// Add an event listener for the Enter key press
+symbolFilter.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        // Trigger a click event on the submit button
+        submitBtn.click();
+    }
+});
+
+// Add an event listener for the Enter key press
+dateFilter.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        // Trigger a click event on the submit button
+        submitBtn.click();
+    }
+});
+
 // const 
 // Add a click event listener to the button
 submitBtn.addEventListener('click', function() {

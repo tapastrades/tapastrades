@@ -31,4 +31,5 @@
     transform: translateY(-50%);
     text-align: left;
     color: #373452;
+    filter: blur(5px);
 }
