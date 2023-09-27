@@ -53,6 +53,7 @@
         /* Input fields */
         .input-container {
             display: flex;
+            flex: 1;
             margin-left: 100px;
             margin-right: 100px;
             margin-top: 50px;
@@ -62,8 +63,13 @@
         }
 
         @media (max-width: 649px) {
+            .top-container {
+                display: flex;
+                flex-direction: row;
+            }
             .input-container {
                 display: flex;
+                flex: 1;
                 margin-left: 100px;
                 margin-right: 100px;
                 margin-top: 50px;
@@ -74,6 +80,7 @@
             }
             .label-container {
                 display: flex;
+                flex: 1;
                 margin-left: 100px;
                 margin-right: 100px;
                 margin-top: 50px;
@@ -82,20 +89,19 @@
                 align-items: left;
                 z-index: 1;
                 flex-direction: column;
-                align-items: center;
+                column-gap: 10px;
             }
 
-            .input-label-2 {
-                position: absolute;
-                top: -150px;
-                left: 120px;
+
+            .blank-con {
+                flex: 1;
             }
-            .input-label-1 {
-                position: absolute;
-                left: 120px;
-                top: -190px;
-            }
+
             .submit-con {
+                margin-top: 10px;
+            }
+
+            #dateFilter {
                 margin-top: 10px;
             }
             
@@ -114,6 +120,7 @@
 
         .label-container {
             display: flex;
+            flex: 1;
             margin-left: 100px;
             margin-right: 100px;
             margin-top: 50px;
@@ -177,6 +184,10 @@
             color: #a097f0;
             margin-left: 100px;
         }
+        .top-container {
+            display: flex;
+            flex-direction: column;
+        }
     </style>
     </style>
 </head>
@@ -192,24 +203,26 @@
     <div>
         <p id='title'>Trade Book</p>
     </div>
-     <!-- Input fields -->
-    <div class="input-container">
-        <input id="symbolFilter" class="inputFilter" type="text" placeholder="e.g crude silver">
-        <input id="dateFilter" class="inputFilter" type="text" placeholder="Input Field 2">
-        <div class="submit-con">
-            <button id="submit-btn"><span></span><i class="fas fa-arrow-right"></i></button>
+    <div class="top-container">
+        <div class="input-container">
+            <input id="symbolFilter" class="inputFilter" type="text" placeholder="e.g crude silver">
+            <input id="dateFilter" class="inputFilter" type="text" placeholder="Date">
+            <div class="submit-con">
+                <button id="submit-btn"><span></span><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        <div class="label-container">
+            <div class="label-con">
+                <label class="input-label-1"> Symbol </label>
+            </div>
+            <div class="label-con">
+                <label class="input-label-2"> Date Range </label>                            
+            </div>
+            <div class="blank-con">
+            </div>
         </div>
     </div>
-    <div class="label-container">
-        <div class="label-con">
-            <label class="input-label-1"> Symbol </label>
-        </div>
-        <div class="label-con">
-            <label class="input-label-2"> Date Range </label>                            
-        </div>
-        <div class="blank-con">
-        </div>
-    </div>
+
     <div class="table-con">
         <table class="tradebook-table">
             <thead>
