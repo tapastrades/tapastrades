@@ -63,48 +63,66 @@
         }
 
         @media (max-width: 649px) {
-            .top-container {
+            .label-con {
+                flex: 2;
+                margin-top: 0px;
+                margin-left: 20px;
+/*                display: inline-block;*/
+            }
+
+            .top-container{
                 display: flex;
                 flex-direction: row;
+                align-content: center;
+                margin-left: 50px;
+                margin-top: -10px;
+                margin-bottom: 10px;
             }
+
             .input-container {
-                display: flex;
-                flex: 1;
-                margin-left: 100px;
-                margin-right: 100px;
-                margin-top: 50px;
-                position:relative;
-                align-items: center;
-                z-index: 0;
                 flex-direction: column;
-            }
-            .label-container {
-                display: flex;
-                flex: 1;
                 margin-left: 100px;
                 margin-right: 100px;
                 margin-top: 50px;
                 position:relative;
                 flex-wrap: wrap;
-                align-items: left;
-                z-index: 1;
+                align-items: center;
+            }
+            .label-container {
                 flex-direction: column;
-                column-gap: 10px;
+                flex: 1;
+                left: -400px;
+                top: -8px;
+            }
+            .input-label-2{
+                position: absolute;
+                top: 42px;
+                left: 15px;
+                white-space: nowrap;
             }
 
-
-            .blank-con {
+            .blank-con{
                 flex: 1;
             }
-
             .submit-con {
                 margin-top: 10px;
             }
 
-            #dateFilter {
-                margin-top: 10px;
+        }
+
+        @media (min-width: 650px){
+             .label-con {
+                flex: 2;
+                margin-top: -178px;
+                margin-left: 20px;
+                display: inline-block;
             }
-            
+
+            .top-container {
+                display: flex;
+                flex-direction: column;
+            }
+
         }
 
         .input-container input {
@@ -130,13 +148,7 @@
             z-index: 1;
         }
 
-        .label-con {
-            flex: 2;
-            margin-top: -178px;
-            margin-left: 20px;
-            display: inline-block;
-        }
-
+       
         .label-con label {
             background-color:#0c0642;
             font-family: urban, sans-serif;
@@ -184,10 +196,7 @@
             color: #a097f0;
             margin-left: 100px;
         }
-        .top-container {
-            display: flex;
-            flex-direction: column;
-        }
+        
     </style>
     </style>
 </head>
