@@ -290,7 +290,9 @@ function updateDynamicText() {
     // Usage example:
     getList()
       .then(list => {
-        
+        var seperated = getSeperated(list);
+        var stdBalance = standardizeToZeroOne(seperated[0]);
+        var stdNifty = standardizeToZeroOne(seperated[1]);
         var itemsToTake = 1
         // Get the selected time period from the dropdown
         const selectedTimePeriodElem = document.getElementById("time-period-select");
@@ -321,6 +323,7 @@ function updateDynamicText() {
         const selectedItems = list.slice(-itemsToTake);
         // Convert the selected items back into an object
         // const selectedObject = Object.fromEntries(selectedItems);
+        // console.log(selectedItems.slice(-1));
         currentBalance = convertK(selectedItems.slice(-1)[0].split(',')[1]);
         previousBalance = convertK(selectedItems.slice(0)[0].split(',')[1]);
         var seperated = getSeperated(selectedItems);
@@ -362,9 +365,6 @@ function updateDynamicText() {
         // Handle errors here
         console.error('Error:', error);
       });
-    // Replace these values with actual data from your source
-    const currentPrice = 100; // Replace with the current price
-    const previousPrice = 97.7; // Replace with the previous price
 
     fetch('openPosition.json')
       .then(response => response.json())
