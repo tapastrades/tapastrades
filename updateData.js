@@ -290,9 +290,6 @@ function updateDynamicText() {
     // Usage example:
     getList()
       .then(list => {
-        var seperated = getSeperated(list);
-        var stdBalance = standardizeToZeroOne(seperated[0]);
-        var stdNifty = standardizeToZeroOne(seperated[1]);
         var itemsToTake = 1
         // Get the selected time period from the dropdown
         const selectedTimePeriodElem = document.getElementById("time-period-select");
