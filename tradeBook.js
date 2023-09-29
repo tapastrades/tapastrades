@@ -133,9 +133,6 @@ window.addEventListener('resize', function(){
     window.location.reload();
 });
 
-
-
-
 const sidebarButton = document.querySelector('.sidebar-button');
 const sidebar = document.querySelector('.sidebar');
 
