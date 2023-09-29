@@ -401,7 +401,6 @@ function getSeperated(list){
 
 
 
-
 // Add an event listener to the dropdown for updating the text when a new time period is selected
 document.getElementById("time-period-select").addEventListener("change", updateDynamicText);
 
