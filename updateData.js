@@ -112,7 +112,7 @@ function updateOpenPositions(openPositions) {
             
         }
     });
-
+    var width = checkWindowSize()
     for (var key in perStrategy) {
         var row = performanceTable.insertRow();
 
@@ -128,6 +128,9 @@ function updateOpenPositions(openPositions) {
         performanceCell.style.borderTop = '1px solid rgba(160, 151, 240, 0.34)';
 
         stratCell.style.color = perStrategy[key][1];
+        if ( width < 500){
+            stratCell.style.paddingRight = `${100 - (500-width)/2}px`
+        }
         stratCell.style.paddingRight = '100px';
 
         performanceCell.style.paddingLeft = '150px';
@@ -141,6 +144,14 @@ function updateOpenPositions(openPositions) {
 
 }
 
+// Check window size and log width and height to the console
+function checkWindowSize() {
+    let windowWidth = window.innerWidth;
+    let windowHeight = window.innerHeight;
+    console.log("Window Width: " + windowWidth);
+    console.log("Window Height: " + windowHeight);
+    return windowWidth;
+}
 
 // Function to generate random colors for the pie chart
 function getRandomColor() {
