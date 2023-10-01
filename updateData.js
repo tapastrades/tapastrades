@@ -128,12 +128,14 @@ function updateOpenPositions(openPositions) {
         performanceCell.style.borderTop = '1px solid rgba(160, 151, 240, 0.34)';
 
         stratCell.style.color = perStrategy[key][1];
-        if ( width < 500){
-            stratCell.style.paddingRight = `${100 - (500-width)/2}px`
-        }
         stratCell.style.paddingRight = '100px';
 
         performanceCell.style.paddingLeft = '150px';
+
+        if ( width < 500){
+            stratCell.style.paddingRight = `${100 - (500-width)/2}px`
+            performanceCell.style.paddingLeft = `${100 - (500-width)/2}px`;
+        }
 
         if (perStrategy[key][0] >= 0.0) {
             performanceCell.style.color = '#86d18c';
