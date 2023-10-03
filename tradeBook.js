@@ -4,7 +4,7 @@ function filterData(data, symbolFilterValue, dateFilterStart, dateFilterEnd) {
 
     for(const item of data){
 
-        if (item['Instrument'] == symbolFilterValue){
+        if (item['Instrument'] == symbolFilterValue.toLowerCase()){
             filteredData.push(item);
         }
         else if (symbolFilterValue === ''){
