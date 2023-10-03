@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // Add an event listener for the "resize" event
 window.addEventListener('resize', function(){
     // Reload the page when the window is resized
-    window.location.reload();
+    // window.location.reload();
 });
 
 const sidebarButton = document.querySelector('.sidebar-button');
